@@ -28,6 +28,6 @@ Suggests:
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.3
 VignetteBuilder: knitr
-URL: https://https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929
-BugReports: https://https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/issues
+URL: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929
+BugReports: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/issues
 
