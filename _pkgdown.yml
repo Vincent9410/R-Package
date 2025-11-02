@@ -1,3 +1,4 @@
+url: https://vincent9410.github.io/R-Package/
 template:
   bootstrap: 5
   bootswatch: cosmo
@@ -9,7 +10,7 @@ navbar:
   components:
     github:
       icon: fab fa-github
-      href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire
+      href: https://github.com/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire
 
 home:
   title: ausbushfire
@@ -17,7 +18,7 @@ home:
   - text: Launch the Shiny app
     href: articles/getting-started.html#launch-the-shiny-app
   - text: Report an issue
-    href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire/issues
+    href: https://github.com/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire/issues
 
 reference:
   - title: App
