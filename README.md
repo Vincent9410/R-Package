@@ -128,8 +128,7 @@ extreme_events("fwi", threshold = 10, comparator = ">=", start_year = 2000, end_
 
 ## Documentation website (pkgdown)
 
-**Website:**
-<https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-rabbit292929>
+**Website:** <https://vincent9410.github.io/R-Package>
 
 - **Reference**: function documentation and dataset topics
 
