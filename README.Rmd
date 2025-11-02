@@ -15,10 +15,6 @@ knitr::opts_chunk$set(
 
 # ausbushfire
 
-<!-- badges: start -->
-
-<!-- badges: end -->
-
 `ausbushfire` is an R package specifically designed for analyzing the relationship between Australian bushfires and climate data. It provides a set of functions and an interactive Shiny application to help users easily explore global temperature change trends over the past century.
 
 ## Installation
@@ -29,7 +25,7 @@ You can install the development version of ausbushfire like so:
 # Install remotes if needed
 # install.packages("remotes")
 
-#remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929")
+remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929")
 ```
 
 ## Quick start
@@ -38,7 +34,7 @@ Launch the Shiny app bundled in the package:
 
 ```{r}
 library(ausbushfire)
-run_ausbushfire_app()
+#run_ausbushfire_app()
 ```
 
 Explore helper functions:
@@ -55,8 +51,6 @@ annual_trends("climate", 2000, 2020)
 extreme_events("fwi", threshold = 10, comparator = ">=", start_year = 2000, end_year = 2020)
 
 ```
-
-------------------------------------------------------------------------
 
 ## What’s included
 
@@ -96,8 +90,6 @@ extreme_events("fwi", threshold = 10, comparator = ">=", start_year = 2000, end_
 
 -   `extreme_events(data_type, threshold, comparator, start_year, end_year)` — per-year extreme counts & frequency
 
-------------------------------------------------------------------------
-
 ## Documentation website (pkgdown)
 
 **Website:** <https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-rabbit292929>
@@ -108,8 +100,6 @@ extreme_events("fwi", threshold = 10, comparator = ">=", start_year = 2000, end_
 
 -   **Home**: brief description and quick links
 
-------------------------------------------------------------------------
-
 ## Reproducible data preparation
 
 Raw data are cleaned under `data-raw/` and saved with `usethis::use_data()` into the package:
@@ -118,13 +108,9 @@ Raw data are cleaned under `data-raw/` and saved with `usethis::use_data()` into
 
 -   All objects and functions are documented with **roxygen2**.
 
-------------------------------------------------------------------------
-
 ## License
 
 This package is released under the **MIT License**. See [LICENSE](LICENSE).
-
-------------------------------------------------------------------------
 
 ## Acknowledgements
 
@@ -132,9 +118,7 @@ This package is released under the **MIT License**. See [LICENSE](LICENSE).
 
 -   FWI data in this package are **synthetic** and intended solely for instructional purposes.
 
-------------------------------------------------------------------------
-
-### Maintainer
+## Maintainer
 
 **ZHUO ZHANG** — [zzha0623\@student.monash.edu](mailto:zzha0623@student.monash.edu){.email}\
 
