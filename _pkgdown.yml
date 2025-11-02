@@ -1,0 +1,34 @@
+template:
+  bootstrap: 5
+  bootswatch: cosmo
+
+navbar:
+  structure:
+    left: [reference, articles]
+    right: [github]
+  components:
+    github:
+      icon: fab fa-github
+      href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire
+
+home:
+  title: ausbushfire
+  links:
+  - text: Launch the Shiny app
+    href: articles/getting-started.html#launch-the-shiny-app
+  - text: Report an issue
+    href: https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire/issues
+
+reference:
+  - title: App
+    contents:
+      - run_ausbushfire_app
+  - title: Datasets
+    contents:
+      - climate_data
+      - fwi_data
+  - title: Helpers
+    contents:
+      - calculate_statistics
+      - annual_trends
+      - extreme_events

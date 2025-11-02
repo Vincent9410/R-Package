@@ -1,0 +1,121 @@
+---
+title: "Getting started with ausbushfire"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{getting-started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Overview
+
+`ausbushfire` provides two teaching datasets and a Shiny app to interactively explore meteorological context relevant to Australian bushfires.
+
+-   `climate_data`: monthly global temperature anomalies (°C).
+
+-   `fwi_synthetic`: monthly Fire Weather Index (FWI) (synthetic/demo).
+
+It also provides small helper functions for quick analysis:
+
+-   `calculate_statistics()` — descriptive statistics within a year range
+
+-   `annual_trends()` — yearly mean/max/min time series
+
+-   `extreme_events()` — yearly counts/frequency beyond a threshold
+
+The package ships an interactive app launched by `run_ausbushfire_app()`.
+
+```{r}
+library(ausbushfire)
+library(dplyr)
+library(ggplot2)
+```
+
+## Datasets
+
+### Climate_data
+
+```{r}
+data("climate_data", package = "ausbushfire")
+dplyr::glimpse(climate_data)
+```
+
+Key columns:
+
+-   `Year` (integer), `Month` (abbrev: Jan–Dec), `Date` (mid-month Date)
+
+-   `Quarter` ("Q1"–"Q4")
+
+-   `Temperature_Anomaly` (°C)
+
+### Fire Weather Index (synthetic)
+
+```{r}
+data("fwi_data", package = "ausbushfire")
+dplyr::glimpse(fwi_data)
+```
+
+Key column:
+
+-   `FWI` (numeric). Example banding: 0–5 (Low), 5–15 (Moderate), 15–30 (High), 30+ (Extreme)
+
+## Quick descriptive statistics
+
+```{r}
+# Temperature anomaly stats for 2000–2020
+calculate_statistics("climate", 2000, 2020)
+
+# FWI stats for 2000–2020
+calculate_statistics("fwi", 2000, 2020)
+```
+
+## Annual trends
+
+```{r}
+clim_annual <- annual_trends("climate", 2000, 2020)
+
+ggplot(clim_annual, aes(Year, Annual_Mean)) +
+geom_line(linewidth = 0.9) +
+geom_point(size = 1.3) +
+labs(x = NULL, y = "Annual mean anomaly (°C)")
+```
+
+```{r}
+fwi_annual <- annual_trends("fwi", 2000, 2020)
+
+ggplot(fwi_annual, aes(Year, Annual_Mean)) +
+geom_line(linewidth = 0.9) +
+geom_point(size = 1.3) +
+labs(x = NULL, y = "Annual mean FWI")
+```
+
+## Extreme events
+
+Use thresholds appropriate to each variable.
+
+-   Temperature anomalies: e.g. `> 1.0 °C`
+
+-   FWI: e.g. `>= 10`
+
+```{r}
+ext_clim <- extreme_events("climate", threshold = 1.0, comparator = ">",  start_year = 2000, end_year = 2020)
+ext_fwi  <- extreme_events("fwi",     threshold = 10,  comparator = ">=", start_year = 2000, end_year = 2020)
+
+par(mfrow = c(1,2))
+plot(ext_clim$Year, ext_clim$Extreme_Frequency, type = "b",
+xlab = "Year", ylab = "Frequency", main = "Anomaly > 1°C")
+plot(ext_fwi$Year,  ext_fwi$Extreme_Frequency,  type = "b",
+xlab = "Year", ylab = "Frequency", main = "FWI ≥ 10")
+par(mfrow = c(1,1))
+```
+
+## Launch the Shiny app
+
+You can use the `run_ausbushfire_app()` command to run the Shiny app. The app uses only package datasets (no read.csv), provides interactive controls to explore monthly/quarterly/yearly structure, and includes brief guidance notes on interpretation.

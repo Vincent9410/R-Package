@@ -1,0 +1,141 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+
+# ausbushfire
+
+<!-- badges: start -->
+
+<!-- badges: end -->
+
+`ausbushfire` is an R package specifically designed for analyzing the relationship between Australian bushfires and climate data. It provides a set of functions and an interactive Shiny application to help users easily explore global temperature change trends over the past century.
+
+## Installation
+
+You can install the development version of ausbushfire like so:
+
+``` r
+# Install remotes if needed
+# install.packages("remotes")
+
+#remotes::install_github("ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929")
+```
+
+## Quick start
+
+Launch the Shiny app bundled in the package:
+
+```{r}
+library(ausbushfire)
+run_ausbushfire_app()
+```
+
+Explore helper functions:
+
+```{r}
+# Descriptive statistics for 2000–2020
+calculate_statistics("climate", 2000, 2020)
+calculate_statistics("fwi",     2000, 2020)
+
+# Annual trends (yearly mean / min / max)
+annual_trends("climate", 2000, 2020)
+
+# Extreme events per year (e.g., FWI ≥ 10)
+extreme_events("fwi", threshold = 10, comparator = ">=", start_year = 2000, end_year = 2020)
+
+```
+
+------------------------------------------------------------------------
+
+## What’s included
+
+### Shiny app
+
+-   Fully interactive exploration of monthly / quarterly / yearly structure
+
+-   Uses **package datasets only** (no `read.csv` inside the app)
+
+-   Clear field descriptions and interpretation notes
+
+-   Custom styling (Bootswatch + optional CSS)
+
+-   Start with `run_ausbushfire_app()`
+
+### Datasets
+
+-   `climate_data` — monthly global **temperature anomalies** (°C), 1880–2025\
+
+    Columns: `Year` (int), `Month` (abbrev `Jan`–`Dec`), `Temperature_Anomaly` (numeric), `Date` (mid-month `Date`), `Quarter` (`"Q1"`–`"Q4"`).
+
+-   `fwi_data` — monthly **Fire Weather Index (FWI)** (synthetic/demo), 1900–2025\
+
+    Columns: `Year`, `Month` (abbrev), `FWI`, `Date` (mid-month), `Quarter`.
+
+<!-- -->
+
+-   Columns: `Year`, `Month` (abbrev), `FWI`, `Date` (mid-month), `Quarter`.
+
+> Note: `fwi_synthetic` is **synthetic demo data** for teaching and interactive examples, not directly computed from ERA5/CFFDRS.
+
+### Helper functions
+
+-   `calculate_statistics(data_type, start_year, end_year)` — descriptive stats within a year range
+
+-   `annual_trends(data_type, start_year, end_year)` — yearly mean/min/max
+
+-   `extreme_events(data_type, threshold, comparator, start_year, end_year)` — per-year extreme counts & frequency
+
+------------------------------------------------------------------------
+
+## Documentation website (pkgdown)
+
+**Website:** <https://ETC5523-2025.github.io/assignment-4-packages-and-shiny-apps-rabbit292929>
+
+-   **Reference**: function documentation and dataset topics
+
+-   **Articles**: “Getting started with ausbushfire” vignette
+
+-   **Home**: brief description and quick links
+
+------------------------------------------------------------------------
+
+## Reproducible data preparation
+
+Raw data are cleaned under `data-raw/` and saved with `usethis::use_data()` into the package:
+
+-   `data-raw/data-cleaning.R` reads the original CSV (e.g., `GLB.Ts+dSST.csv`), tidies monthly anomalies, derives SH seasonal summaries if needed, and saves the final objects.
+
+-   All objects and functions are documented with **roxygen2**.
+
+------------------------------------------------------------------------
+
+## License
+
+This package is released under the **MIT License**. See [LICENSE](LICENSE).
+
+------------------------------------------------------------------------
+
+## Acknowledgements
+
+-   Temperature anomalies derived from NASA GISTEMP (e.g., `GLB.Ts+dSST.csv`), cleaned for teaching/demo.
+
+-   FWI data in this package are **synthetic** and intended solely for instructional purposes.
+
+------------------------------------------------------------------------
+
+### Maintainer
+
+**ZHUO ZHANG** — [zzha0623\@student.monash.edu](mailto:zzha0623@student.monash.edu){.email}\
+
+Issues & feature requests: \<<https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/ausbushfire/issues>\>

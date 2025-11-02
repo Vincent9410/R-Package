@@ -1,0 +1,33 @@
+Package: ausbushfire
+Type: Package
+Title: Australian Bushfire Climate Analysis Package
+Version: 0.1.0
+Authors@R: 
+    person("ZHUO", "ZHANG", email = "zzha0623@student.monash.edu", 
+           role = c("aut", "cre"))
+Description: An R package for analyzing climate data related to Australian bushfires
+    Includes interactive Shiny applications for data exploration and visualization
+    of temperature anomalies and fire risk factors.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Depends: 
+    R (>= 3.5)
+Imports:
+    shiny,
+    dplyr,
+    ggplot2,
+    tidyr,
+    lubridate,
+    plotly
+Suggests:
+    knitr,
+    rmarkdown,
+    testthat,
+    shinythemes
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.3
+VignetteBuilder: knitr
+URL: https://https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929
+BugReports: https://https://github.com/ETC5523-2025/assignment-4-packages-and-shiny-apps-rabbit292929/issues
+
