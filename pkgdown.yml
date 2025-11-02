@@ -3,7 +3,7 @@ pkgdown: 2.1.3
 pkgdown_sha: ~
 articles:
   getting-started: getting-started.html
-last_built: 2025-11-02T18:50Z
+last_built: 2025-11-02T18:52Z
 urls:
   reference: https://vincent9410.github.io/R-Package/reference
   article: https://vincent9410.github.io/R-Package/articles
